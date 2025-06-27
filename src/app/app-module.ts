@@ -1,20 +1,16 @@
-import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing-module';
-import { App } from './app';
+import { AppComponent } from './app';
+import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth-module';
+import { CommonModule } from '@angular/common';
+import { DashboardModule } from './dashboard/dashboard-module';
+import { ProfileModule } from './profile/profile-module';
 
 @NgModule({
-  declarations: [
-    App
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [
-    provideBrowserGlobalErrorListeners()
-  ],
-  bootstrap: [App]
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, AuthModule, CommonModule, DashboardModule, ProfileModule],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

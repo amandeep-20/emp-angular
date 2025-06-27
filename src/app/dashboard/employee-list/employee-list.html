@@ -1,0 +1,148 @@
+<!-- 
+
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div class="p-4" *ngIf="!isLoading">
+  <ul>
+    <li *ngFor="let employee of employees; trackBy: trackById" class="border p-2 mb-2 flex justify-between">
+      <div>
+        <p><strong>ID:</strong> {{ employee.id }}</p>
+        <p><strong>Name:</strong> {{ employee.name }}</p>
+        <p><strong>Position:</strong> {{ employee.position }}</p>
+        <p><strong>Email:</strong> {{ employee.email }}</p>
+        <p><strong>Department:</strong> {{ employee.department }}</p>
+        <p><strong>Status:</strong> {{ employee.status }}</p>
+      </div>
+      <div>
+        <button (click)="editEmployee(employee.id)" class="bg-blue-500 text-white p-1 rounded mr-2">Edit</button>
+        <button (click)="deleteEmployee(employee.id)" class="bg-red-500 text-white p-1 rounded">Delete</button>
+      </div>
+    </li>
+  </ul>
+</div> -->
+
+
+
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div *ngIf="!isLoading" class="bg-white rounded-lg shadow-sm">
+  <!-- Table Container -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full">
+      <!-- Table Header -->
+      <thead class="bg-gray-50 border-b border-gray-200">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            ID
+          </th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Name
+          </th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Position
+          </th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Email
+          </th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Department
+          </th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Status
+          </th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      
+      <!-- Table Body -->
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr *ngFor="let employee of employees; trackBy: trackById" 
+            class="hover:bg-gray-50 transition-colors duration-150">
+          
+          <!-- ID Column -->
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            {{ employee.id }}
+          </td>
+          
+          <!-- Name Column -->
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="flex items-center">
+              <!-- Colored Circle for Name -->
+              <div class="h-8 w-8 rounded-full flex items-center justify-center text-white text-sm font-medium mr-3"
+                   [ngClass]="{
+                     'bg-red-500': employee.name.charAt(0).toUpperCase() === 'S',
+                     'bg-orange-500': employee.name.charAt(0).toUpperCase() === 'M',
+                     'bg-blue-500': employee.name.charAt(0).toUpperCase() === 'E',
+                     'bg-green-500': employee.name.charAt(0).toUpperCase() === 'A',
+                     'bg-purple-500': employee.name.charAt(0).toUpperCase() === 'J',
+                     'bg-pink-500': employee.name.charAt(0).toUpperCase() === 'R',
+                     'bg-indigo-500': !['S','M','E','A','J','R'].includes(employee.name.charAt(0).toUpperCase())
+                   }">
+                {{ employee.name.charAt(0).toUpperCase() }}
+              </div>
+              <div class="text-sm font-medium text-gray-900">
+                {{ employee.name }}
+              </div>
+            </div>
+          </td>
+          
+          <!-- Position Column -->
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600">
+            {{ employee.position }}
+          </td>
+          
+          <!-- Email Column -->
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+            {{ employee.email }}
+          </td>
+          
+          <!-- Department Column -->
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+            {{ employee.department }}
+          </td>
+          
+          <!-- Status Column -->
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full"
+                  [ngClass]="{
+                    'bg-green-100 text-green-800': employee.status === 'Active',
+                    'bg-yellow-100 text-yellow-800': employee.status === 'On Leave',
+                    'bg-red-100 text-red-800': employee.status === 'Inactive'
+                  }">
+              {{ employee.status }}
+            </span>
+          </td>
+          
+          <!-- Actions Column -->
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+            <div class="flex items-center space-x-2">
+              <!-- View Button -->
+              <button (click)="deleteEmployee(employee.id)" 
+                      class="text-gray-400 hover:text-red-600 transition-colors duration-150">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+              </button>
+              
+              <!-- Edit Button -->
+              <button (click)="editEmployee(employee.id)" 
+                      class="text-gray-400 hover:text-blue-600 transition-colors duration-150">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                </svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Empty State (when no employees) -->
+  <div *ngIf="employees.length === 0" class="text-center py-12">
+    <div class="text-gray-400 text-lg mb-2">No employees found</div>
+    <div class="text-gray-500 text-sm">Add employees to see them listed here.</div>
+  </div>
+</div>

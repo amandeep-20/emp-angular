@@ -1,0 +1,48 @@
+{
+  "employees": [
+    {
+      "id": "EMP001",
+      "name": "Sarah Wilson",
+      "email": "sarah.wilson@company.com",
+      "phone": "123-456-7890",
+      "department": "Engineering",
+      "position": "Senior Developer",
+      "startDate": "2023/01/15",
+      "status": "Active",
+      "role": "admin"
+    },
+    {
+      "id": "EMP002",
+      "name": "Michael Chen",
+      "email": "michael.chen@company.com",
+      "phone": "234-567-8901",
+      "department": "Product",
+      "position": "Product Manager",
+      "startDate": "2022/06/10",
+      "status": "Active",
+      "role": "employee"
+    },
+    {
+      "id": "EMP003",
+      "name": "Emily Brown",
+      "email": "emily.brown@company.com",
+      "phone": "345-678-9012",
+      "department": "Design",
+      "position": "UX Designer",
+      "startDate": "2023/03/20",
+      "status": "On Leave",
+      "role": "employee"
+    },
+    {
+      "id": "EMP004",
+      "name": "David Lee",
+      "email": "david.lee@company.com",
+      "phone": "456-789-0123",
+      "department": "Engineering",
+      "position": "Software Engineer",
+      "startDate": "2022/09/05",
+      "status": "Active",
+      "role": "employee"
+    }
+  ]
+}
